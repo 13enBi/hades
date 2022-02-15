@@ -1,0 +1,12 @@
+{
+  "name": "@hades/shared",
+  "version": "0.0.1",
+  "description": "@hades/shared",
+  "main": "index.ts",
+  "scripts": {},
+  "author": "13enbi",
+  "license": "MIT",
+  "dependencies": {
+    "string-width": "^5.0.1"
+  }
+}

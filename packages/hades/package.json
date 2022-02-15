@@ -1,0 +1,18 @@
+{
+  "name": "hades",
+  "version": "0.0.1",
+  "description": "hades",
+  "main": "./src/index.ts",
+  "scripts": {},
+  "author": "13enbi",
+  "license": "MIT",
+  "dependencies": {
+    "@hades/layout": "workspace:*",
+    "@hades/render": "workspace:*",
+    "@hades/shared": "workspace:*",
+    "ansi-escapes": "^5.0.0"
+  },
+  "devDependencies": {
+    "vue": "^3.2.31"
+  }
+}
