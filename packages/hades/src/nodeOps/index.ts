@@ -1,11 +1,10 @@
 import { RendererOptions } from 'vue';
-
 import {
     createElement,
-    createTextNode,
+    createRawText,
     HadesElement,
     HadesNode,
-    HadesTextNode
+    HadesRawTextNode
 } from '@hades/layout';
 import { HadesContainer } from '../container';
 import patchStyle from './patchStyle';
@@ -32,11 +31,11 @@ export const createNodeOps = (
 
     createElement: (type, _, __, props) => createElement(type, props),
 
-    createText: text => createTextNode(text),
+    createText: text => createRawText(text),
 
-    createComment: () => createTextNode(null),
+    createComment: () => createRawText(null),
 
-    setText: (node: HadesTextNode, text) => {
+    setText: (node: HadesRawTextNode, text) => {
         node.setTextContent(text);
 
         rootContainer.update();

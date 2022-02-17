@@ -1,25 +1,19 @@
-import { getContentSize } from '@hades/shared';
-import { NodeType, Content } from './';
-import { HadesNode } from './node';
+import { Anchor, HadesNode, NodeType, Props } from '.';
+import { HadesElement } from './element';
 
-export class HadesTextNode extends HadesNode {
-    type = NodeType.RAW_TEXT;
+export class HadesTextElement extends HadesElement {
+    type = NodeType.TEXT;
 
-    constructor() {
-        super();
-
-        this.yoga.setMeasureFunc(() => getContentSize(this.content));
+    constructor(props?: Props) {
+        super(props);
     }
 
-    setTextContent(text: string) {
-        this.yoga.markDirty();
-        this.content = text;
+    insertBefore(this: this, child: HadesNode, anchor: Anchor) {
+        if (child instanceof HadesElement)
+            throw new Error(`element can not be a child of a <Text> element`);
+
+        super.insertBefore(child, anchor);
     }
 }
 
-export const createTextNode = (content: Content) => {
-    const node = new HadesTextNode();
-    node.content = content;
-
-    return node;
-};
+export const createTextElement = (props?: Props) => new HadesTextElement(props);

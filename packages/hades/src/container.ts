@@ -1,13 +1,14 @@
 import { queuePostFlushCb } from 'vue';
 import ansi from 'ansi-escapes';
-import { HadesElement } from '@hades/layout';
+import { HadesViewElement } from '@hades/layout';
 import { render } from '@hades/render';
 import { Options } from './options';
 
 const { clearScreen } = ansi;
 
-export class HadesContainer extends HadesElement {
+export class HadesContainer extends HadesViewElement {
     update: () => void;
+
     constructor({ stdout }: Options) {
         super();
 

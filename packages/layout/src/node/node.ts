@@ -1,9 +1,10 @@
 import Yoga, { YogaNode } from 'yoga-layout-prebuilt';
-import { NodeType, HadesElement, Layout, Content } from '.';
+import { NodeType, Layout, Content } from '.';
 import { ShapePayload } from '../shape';
+import { HadesElement } from './element';
 
 export class HadesNode {
-    type: NodeType = NodeType.NONE;
+    type: NodeType = null!;
     parent: HadesElement | null = null;
     content: Content = null;
     yoga: YogaNode = Yoga.Node.create();

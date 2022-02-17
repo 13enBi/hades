@@ -4,14 +4,10 @@ import { NOOP } from '@hades/shared';
 import createNodeOps from './nodeOps';
 import { createContainer } from './container';
 import provideOptions, { Options, resolveOptions } from './options';
-import { View } from './components';
+import { registerComponents } from './components/register';
 
 type HadesApp = App<HadesElement> & {
     mount: () => ComponentPublicInstance;
-};
-
-const registerComponents = (app: App) => {
-    app.component('h-view', View);
 };
 
 export const createHadesApp = (
@@ -24,11 +20,10 @@ export const createHadesApp = (
     const { createApp } = createRenderer(nodeOps);
     const app = createApp(rootComponent);
 
-    registerComponents(app);
-
     app.config.compilerOptions.comments = false;
     app.config.warnHandler = NOOP;
     app.use(provideOptions, resolvedOptions);
+    app.use(registerComponents);
 
     const { mount } = app;
     app.mount = () => mount(container);
