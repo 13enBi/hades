@@ -52,13 +52,19 @@ export const createNodeOps = (
     nextSibling: node => node.nextSibling,
 
     patchProp: (element, key, prevValue, nextValue) => {
-        if (key === 'style') {
-            patchStyle(element, prevValue, nextValue);
+        switch (key) {
+            case 'style':
+                element.setStyle({
+                    ...element.style,
+                    ...patchStyle(prevValue, nextValue)
+                });
+                rootContainer.update();
 
-            rootContainer.update();
+                break;
+
+            default:
+                element.props[key] = nextValue;
         }
-
-        element.props[key] = nextValue;
     }
 });
 

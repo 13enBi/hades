@@ -35,7 +35,7 @@ export const colorize = (
 
 export const processColor = (element: HadesElement) => {
     const {
-        shape: { color, backgroundColor },
+        style: { color, backgroundColor },
         content
     } = element;
 

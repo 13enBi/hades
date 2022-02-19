@@ -1,10 +1,10 @@
 import { HadesElement } from '../node';
 import { camelize, capitalize, memo, Undef } from '@hades/shared';
-import { HadesNode } from '..';
-import Yoga from 'yoga-layout-prebuilt';
 
 export type Percentage = `${number}%`;
-export const isPercentage = memo((str: string) => str.endsWith('%'));
+export const isPercentage = memo((str: string): str is Percentage =>
+    str.endsWith('%')
+);
 
 export type StyleValue = string | number | Undef;
 export type SetStyleFn<T = any> = (
@@ -12,6 +12,9 @@ export type SetStyleFn<T = any> = (
     key: string,
     value: StyleValue
 ) => T;
+export type WithNoneValue<T extends object> = {
+    [K in keyof T]: T[K] | '' | null | undefined;
+};
 
 export const isNoneValue = (value: StyleValue): value is Undef | 'none' =>
     !value || value === 'none';
@@ -30,5 +33,8 @@ export const createSetMapStyle =
             element.yoga[`set${capitalize(propKey)}`]?.(map[camelizedValue]);
     };
 
-export const isDisplayNone = (node: HadesNode) =>
-    node.shape.display === Yoga.DISPLAY_NONE;
+export const isDisplayNone = (element: HadesElement) =>
+    element.style.display === 'none';
+
+export const isDisplayInline = (element: HadesElement) =>
+    element.style.display === 'inline';

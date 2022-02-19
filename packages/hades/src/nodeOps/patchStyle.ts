@@ -1,28 +1,29 @@
-import { setStyle, HadesElement, Style } from '@hades/layout';
+import { Style } from '@hades/layout';
 import { isObject } from '@hades/shared';
 
-export const patchStyle = (
-    element: HadesElement,
-    prevStyle: Style,
-    nextStyle: Style
-) => {
+export const patchStyle = (prevStyle: Style, nextStyle: Style) => {
     const prevIsObject = isObject(prevStyle);
     const nextIsObject = isObject(nextStyle);
 
-    if (!nextIsObject)
-        return (
-            prevIsObject &&
-            Object.keys(prevStyle).forEach(key => setStyle(element, key, null))
-        );
+    const resolvedStyle: any = {};
 
-    Object.entries(nextStyle).forEach(([key, value]) =>
-        setStyle(element, key, value)
+    if (!nextIsObject) {
+        prevIsObject &&
+            Object.keys(prevStyle).forEach(key => (resolvedStyle[key] = null));
+
+        return resolvedStyle;
+    }
+
+    Object.entries(nextStyle).forEach(
+        ([key, value]) => (resolvedStyle[key] = value)
     );
 
     prevIsObject &&
         Object.keys(prevStyle).forEach(key => {
-            if (!Reflect.has(nextStyle, key)) setStyle(element, key, null);
+            if (!Reflect.has(nextStyle, key)) resolvedStyle[key] = null;
         });
+
+    return resolvedStyle;
 };
 
 export default patchStyle;

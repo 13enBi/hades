@@ -7,8 +7,6 @@ type WithUndef<T extends object> = {
 };
 
 export type ShapePayload = WithUndef<{
-    display: Yoga.YogaDisplay;
-
     color: string;
     backgroundColor: string;
 

@@ -1,11 +1,16 @@
 import { Anchor, HadesNode, NodeType, Props } from '.';
+import { Style } from '..';
+import { TextDefaultStyle } from '../style/default';
 import { HadesElement } from './element';
 
 export class HadesTextElement extends HadesElement {
     type = NodeType.TEXT;
+    style = TextDefaultStyle;
 
-    constructor(props?: Props) {
-        super(props);
+    setStyle(style: Style) {
+        if (style.display === 'flex') style.display = 'inline';
+
+        super.setStyle(style);
     }
 
     insertBefore(this: this, child: HadesNode, anchor: Anchor) {

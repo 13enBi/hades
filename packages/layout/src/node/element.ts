@@ -1,15 +1,20 @@
 import { insertItem, removeItem } from '@hades/shared';
-import { Anchor } from '..';
+import { Anchor, setStyle, Style } from '..';
 import { Props } from './index';
 import { HadesNode } from './node';
 
 export class HadesElement extends HadesNode {
     props: NonNullable<Props>;
     children: HadesNode[] = [];
+    style: Style = {};
 
     constructor(props?: Props) {
         super();
         this.props = props || {};
+    }
+
+    setStyle(style: Style) {
+        setStyle(this, (this.style = style));
     }
 
     insertBefore(this: HadesElement, child: HadesNode, anchor: Anchor) {
@@ -26,3 +31,6 @@ export class HadesElement extends HadesNode {
         child.parent = null;
     }
 }
+
+export const isElement = (node: unknown): node is HadesElement =>
+    node instanceof HadesElement;

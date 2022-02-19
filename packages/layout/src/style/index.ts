@@ -6,21 +6,24 @@ import setBorder, { BorderStyle } from './border';
 import setDisplay, { DisplayStyle } from './display';
 import setDimensions, { DimensionsStyle } from './dimensions';
 import setFlex, { FlexStyle } from './flex';
+import { HadesElement } from '..';
+import { WithNoneValue } from './helper';
 
-export type Style = Partial<
-    DisplayStyle &
-        BorderStyle &
-        MarginStyle &
-        PaddingStyle &
-        ColorStyle &
-        DimensionsStyle &
-        FlexStyle
+export type Style = WithNoneValue<
+    Partial<
+        DisplayStyle &
+            BorderStyle &
+            MarginStyle &
+            PaddingStyle &
+            ColorStyle &
+            DimensionsStyle &
+            FlexStyle
+    >
 >;
 
-export * from './edges';
-export { isDisplayNone, StyleValue } from './helper';
+export { isDisplayNone, isDisplayInline } from './helper';
 
-export const setStyle = eachCall(
+const setStyleFns = eachCall(
     setColor,
     setPadding,
     setMargin,
@@ -30,4 +33,7 @@ export const setStyle = eachCall(
     setFlex
 );
 
-export default setStyle;
+export const setStyle = (element: HadesElement, style: Style) =>
+    Object.entries(style).forEach(([key, value]) =>
+        setStyleFns(element, key, value)
+    );

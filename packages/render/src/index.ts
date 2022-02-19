@@ -1,8 +1,10 @@
 import {
     HadesNode,
-    HadesElement,
     NodeType,
-    HadesTextElement
+    HadesTextElement,
+    isDisplayNone,
+    isElement,
+    HadesViewElement
 } from '@hades/layout';
 import { processText } from './text';
 import processView from './view';
@@ -12,9 +14,11 @@ export const render = (node: HadesNode, isCalcLayout = false) => {
 
     node.layout = node.yoga.getComputedLayout();
 
+    if (isElement(node) && isDisplayNone(node)) return '';
+
     switch (node.type) {
         case NodeType.VIEW:
-            processView(node as HadesElement);
+            processView(node as HadesViewElement);
             break;
 
         case NodeType.TEXT:
