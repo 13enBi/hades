@@ -1,4 +1,7 @@
-'use strict';
+/**
+ * copy from ink/examples/jest
+ */
+
 import { defineComponent, onMounted, reactive } from 'vue';
 import { View } from 'hades';
 import Summary from './summary';

@@ -9,12 +9,14 @@ onMounted(() => {
     }, 1000)
 
     onUnmounted(() =>
-        clearTimeout(timer)
+        clearInterval(timer)
     )
 })
 
 </script>;
 
 <template>
-    <h-view :style="{ color: 'blue' }">count: {{ count }}</h-view>
+    <h-view
+        :style="{ color: count % 2 ? 'blue' : 'red', borderStyle: 'single', borderColor: 'yellow', padding: 4 }"
+    >count: {{ count }}</h-view>
 </template>;
