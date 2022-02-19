@@ -1,15 +1,8 @@
 import { HadesElement, EdgeValue } from '@hades/layout';
 import { generateSquare, getContentSize, splicingSpacing } from '@hades/shared';
 
-export const nonePadding = {
-    top: 0,
-    right: 0,
-    bottom: 0,
-    left: 0
-};
-
 const generatePadding = (content: string, padding: EdgeValue) => {
-    const { top, right, bottom, left } = { ...nonePadding, ...padding };
+    const { top, right, bottom, left } = padding;
     const { width, height } = getContentSize(content);
 
     const horizontal = left + width + right;
@@ -25,7 +18,7 @@ const generatePadding = (content: string, padding: EdgeValue) => {
 export const processPadding = (element: HadesElement) => {
     const {
         content,
-        shape: { padding: paddingPayload }
+        context: { padding: paddingPayload }
     } = element;
 
     if (!paddingPayload) return;

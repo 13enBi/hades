@@ -19,10 +19,10 @@ const EDGE_TYPES = {
 type EdgeType = 'padding' | 'margin' | 'border';
 type EdgeRawKey = 'top' | 'right' | 'bottom' | 'left';
 export type EdgeValue = {
-    top?: number;
-    right?: number;
-    bottom?: number;
-    left?: number;
+    top: number;
+    right: number;
+    bottom: number;
+    left: number;
 };
 
 export type EdgeStyle<T extends EdgeType> = { [k in T]: string | number } & {
@@ -32,10 +32,10 @@ export type EdgeStyle<T extends EdgeType> = { [k in T]: string | number } & {
 const toRawKey = (type: string, key: string) =>
     key.replace(type, '').toLowerCase() as EdgeRawKey;
 
-const makeEdgeFullValue = (value: number): EdgeValue =>
+const makeEdgeFullValue = (value: number) =>
     Object.fromEntries(
         ['top', 'right', 'bottom', 'left'].map(key => [key, value])
-    );
+    ) as EdgeValue;
 
 export const parseEdgeLength = (value: StyleValue): EdgeValue => {
     if (isNoneValue(value)) return makeEdgeFullValue(0);
@@ -56,7 +56,7 @@ export const parseEdgeLength = (value: StyleValue): EdgeValue => {
 
 export const createSetEdgeStyle = (
     type: EdgeType
-): SetStyleFn<EdgeValue | undefined> => {
+): SetStyleFn<Partial<EdgeValue> | undefined> => {
     const setEdgeKey = `set${capitalize(type)}` as const;
 
     return ({ yoga }, key, value) => {

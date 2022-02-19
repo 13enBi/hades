@@ -44,8 +44,10 @@ const colorizedBorderSpacing = (
 export const processBorder = (element: HadesElement) => {
     const {
         content,
-        shape: { borderStyle, borderColor },
-        layout: { width, height }
+        style: { borderStyle, borderColor },
+        context: {
+            layout: { width, height }
+        }
     } = element;
 
     if (!content || !borderStyle) return;

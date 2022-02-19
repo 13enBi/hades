@@ -10,13 +10,13 @@ export interface BorderStyle {
 const setBorderEdge = createSetEdgeStyle('border');
 
 export const setBorder: SetStyleFn = (element, key, value) => {
-    if (isDisplayInline(element)) return;
-    if (key !== 'borderStyle' && key !== 'borderColor') return;
+    if (
+        isDisplayInline(element) ||
+        (key !== 'borderStyle' && key !== 'borderColor') ||
+        isNoneValue(value)
+    )
+        return;
 
-    if (isNoneValue(value)) return (element.shape[key] = void 0);
-
-    //@ts-ignore
-    element.shape[key] = value;
     setBorderEdge(element, 'border', 1);
 };
 

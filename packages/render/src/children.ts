@@ -1,16 +1,12 @@
 import slice from 'slice-ansi';
 import { HadesElement } from '@hades/layout';
 import { lfSplit, stringWidth } from '@hades/shared';
-import { nonePadding } from './padding';
 import render from '.';
 
-const generateChildOutputAndOffset = ({ shape, layout }: HadesElement) => {
+const generateChildOutputAndOffset = ({ context, style }: HadesElement) => {
+    const { padding, layout } = context;
     const { width, height } = layout;
-    const borderWidth = +!!shape.borderStyle;
-    const padding = {
-        ...nonePadding,
-        ...shape.padding
-    };
+    const borderWidth = +!!style.borderStyle;
 
     const offsetLeft = borderWidth + padding.left;
     const offsetTop = borderWidth + padding.top;
@@ -30,8 +26,10 @@ export const processChildren = (element: HadesElement) => {
         render(child);
 
         const {
-            layout: { left, top },
-            content
+            content,
+            context: {
+                layout: { left, top }
+            }
         } = child;
         if (!content) return;
 

@@ -1,6 +1,6 @@
 import Yoga, { YogaNode } from 'yoga-layout-prebuilt';
-import { NodeType, Layout, Content } from '.';
-import { ShapePayload } from '../shape';
+import { NodeType, Content } from '.';
+import { createRenderContext } from '../context';
 import { HadesElement } from './element';
 
 export class HadesNode {
@@ -8,8 +8,7 @@ export class HadesNode {
     parent: HadesElement | null = null;
     content: Content = null;
     yoga: YogaNode = Yoga.Node.create();
-    shape: ShapePayload = {};
-    layout: Layout = null!; //will be set synchronously right after render
+    context = createRenderContext(this); //will be set synchronously right after render
 
     get nextSibling(): HadesNode | null {
         const { parent } = this;

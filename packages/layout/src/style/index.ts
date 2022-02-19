@@ -1,13 +1,17 @@
 import { eachCall } from '@hades/shared';
 import setPadding, { PaddingStyle } from './padding';
 import setMargin, { MarginStyle } from './margin';
-import setColor, { ColorStyle } from './color';
 import setBorder, { BorderStyle } from './border';
 import setDisplay, { DisplayStyle } from './display';
 import setDimensions, { DimensionsStyle } from './dimensions';
 import setFlex, { FlexStyle } from './flex';
 import { HadesElement } from '..';
 import { WithNoneValue } from './helper';
+
+interface ColorStyle {
+    color: string;
+    backgroundColor: string;
+}
 
 export type Style = WithNoneValue<
     Partial<
@@ -22,9 +26,9 @@ export type Style = WithNoneValue<
 >;
 
 export { isDisplayNone, isDisplayInline } from './helper';
+export { EdgeStyle, EdgeValue } from './edges';
 
 const setStyleFns = eachCall(
-    setColor,
     setPadding,
     setMargin,
     setBorder,

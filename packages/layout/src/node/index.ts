@@ -5,7 +5,6 @@ import { HadesElement } from './element';
 import { createViewElement } from './view';
 import { createTextElement } from './text';
 
-export type Layout = ReturnType<YogaNode['getComputedLayout']>;
 export type Props = Record<string, any> | null;
 export type Content = string | null;
 export type Anchor = HadesNode | null | undefined;

@@ -12,7 +12,7 @@ import processView from './view';
 export const render = (node: HadesNode, isCalcLayout = false) => {
     if (isCalcLayout) node.yoga.calculateLayout();
 
-    node.layout = node.yoga.getComputedLayout();
+    node.context.layout = node.yoga.getComputedLayout();
 
     if (isElement(node) && isDisplayNone(node)) return '';
 

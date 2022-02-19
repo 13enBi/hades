@@ -12,8 +12,11 @@ export const setPadding: SetStyleFn = (element, key, value) => {
     const paddingLength = setPaddingEdge(element, key, value);
     if (!paddingLength) return;
 
-    const { shape } = element;
-    shape.padding = { ...shape.padding, ...paddingLength };
+    const { context } = element;
+    context.padding = {
+        ...context.padding,
+        ...paddingLength
+    };
 };
 
 export default setPadding;
