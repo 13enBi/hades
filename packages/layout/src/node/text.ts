@@ -15,10 +15,12 @@ export class HadesTextElement extends HadesElement {
 
     insertBefore(this: this, child: HadesNode, anchor: Anchor) {
         if (child instanceof HadesElement)
-            throw new Error(`element can not be a child of a <Text> element`);
+            throw new Error(
+                `<${child.type}> element can not be a child of a <${this.type}> element`
+            );
 
         super.insertBefore(child, anchor);
     }
 }
 
-export const createTextElement = (props?: Props) => new HadesTextElement(props);
+ 

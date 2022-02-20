@@ -8,7 +8,8 @@
     "@hades/shared": "workspace:*",
     "chalk": "^5.0.0",
     "cli-boxes": "^3.0.0",
-    "slice-ansi": "^5.0.0"
+    "slice-ansi": "^5.0.0",
+    "terminal-link": "^3.0.0"
   },
   "author": "13enbi",
   "license": "MIT",

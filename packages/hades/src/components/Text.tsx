@@ -1,17 +1,4 @@
-import { NodeType, Style } from '@hades/layout';
-import { defineComponent, PropType } from 'vue';
+import { NodeType } from '@hades/layout';
+import { createBaseComponent } from './Base';
 
-export const Text = defineComponent({
-    name: 'h-text',
-
-    props: { style: Object as PropType<Style> },
-
-    setup:
-        (props, { slots, attrs }) =>
-        () =>
-            (
-                <NodeType.TEXT style={props.style} {...attrs}>
-                    {slots.default?.()}
-                </NodeType.TEXT>
-            )
-});
+export const Text = createBaseComponent(NodeType.TEXT, 'h-text');
