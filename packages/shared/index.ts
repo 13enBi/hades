@@ -74,13 +74,13 @@ export const generateSquare = (w = 1, h = 1) =>
 export const splicingHorizontalString = (...strs: string[]) => {
     const splitedLines = strs.map(lfSplit);
     const longestLen = Math.max(...splitedLines.map(({ length }) => length));
-    const [firtst] = splitedLines;
+    const [first] = splitedLines;
 
     for (let i = 1, len = splitedLines.length; i < len; i++)
         for (let j = 0; j < longestLen; j++)
-            firtst[j] = (firtst[j] || '') + (splitedLines[i][j] || '');
+            first[j] = (first[j] || '') + (splitedLines[i][j] || '');
 
-    return firtst.join('\n');
+    return first.join('\n');
 };
 
 export const splicingVerticalString = (...strs: string[]) =>
