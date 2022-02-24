@@ -63,7 +63,12 @@ export const createNodeOps = (
                 break;
 
             default:
-                element.props[key] = nextValue;
+                if (Reflect.has(element, key)) {
+                    //@ts-ignore
+                    element[key] = nextValue;
+                } else {
+                    element.props[key] = nextValue;
+                }
         }
     }
 });

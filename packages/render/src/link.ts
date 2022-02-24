@@ -9,7 +9,7 @@ export const processLink = (element: HadesLinkElement) => {
     if (element.content) {
         element.content = terminalLink(
             element.content,
-            element.props.href || '/',
+            element.href || '/',
             {
                 fallback: text => chalk.underline(text)
             }
