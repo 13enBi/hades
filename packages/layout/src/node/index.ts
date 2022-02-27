@@ -3,6 +3,7 @@ import { HadesElement } from './element';
 import { HadesViewElement } from './view';
 import { HadesTextElement } from './text';
 import { HadesLinkElement } from './link';
+import { HadesImageElement } from './image';
 
 export type Props = Record<string, any> | null;
 export type Content = string | null;
@@ -12,20 +13,24 @@ export const enum NodeType {
     RAW_TEXT = 'hades_raw_text',
     TEXT = 'hades_text',
     VIEW = 'hades_view',
-    LINK = 'hades_link'
+    LINK = 'hades_link',
+    IMAGE = 'hades_image'
 }
 
-export * from './node';
-export * from './element';
-export * from './view';
-export * from './text';
-export * from './rawText';
-export * from './link';
+export { HadesRawTextNode, createRawText } from './rawText';
+export {
+    HadesNode,
+    HadesElement,
+    HadesViewElement,
+    HadesTextElement,
+    HadesLinkElement
+};
 
 const NODE_TYPE_MAP: Record<string, typeof HadesElement> = {
     [NodeType.VIEW]: HadesViewElement,
     [NodeType.TEXT]: HadesTextElement,
-    [NodeType.LINK]: HadesLinkElement
+    [NodeType.LINK]: HadesLinkElement,
+    [NodeType.IMAGE]: HadesImageElement
 };
 export const createElement = (type: string, props?: Props) => {
     const creator = NODE_TYPE_MAP[type];
