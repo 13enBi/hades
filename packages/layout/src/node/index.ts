@@ -1,5 +1,5 @@
 import { HadesNode } from './node';
-import { HadesElement } from './element';
+import { HadesElement, isElement } from './element';
 import { HadesViewElement } from './view';
 import { HadesTextElement } from './text';
 import { HadesLinkElement } from './link';
@@ -19,6 +19,7 @@ export const enum NodeType {
 
 export { HadesRawTextNode, createRawText } from './rawText';
 export {
+    isElement,
     HadesNode,
     HadesElement,
     HadesViewElement,

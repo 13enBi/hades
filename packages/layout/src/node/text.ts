@@ -1,4 +1,4 @@
-import { Anchor, HadesNode, NodeType, Props } from '.';
+import { Anchor, HadesNode, NodeType } from '.';
 import { Style } from '..';
 import { TextDefaultStyle } from '../style/default';
 import { HadesElement } from './element';
@@ -22,5 +22,3 @@ export class HadesTextElement extends HadesElement {
         super.insertBefore(child, anchor);
     }
 }
-
- 

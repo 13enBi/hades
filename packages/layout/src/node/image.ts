@@ -1,4 +1,5 @@
-import { HadesElement, NodeType } from '.';
+import { NodeType } from '.';
+import { HadesElement } from './element';
 
 export class HadesImageElement extends HadesElement {
     type = NodeType.IMAGE;

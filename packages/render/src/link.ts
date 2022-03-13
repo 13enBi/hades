@@ -7,12 +7,8 @@ export const processLink = (element: HadesLinkElement) => {
     processText(element);
 
     if (element.content) {
-        element.content = terminalLink(
-            element.content,
-            element.href || '/',
-            {
-                fallback: text => chalk.underline(text)
-            }
-        );
+        element.content = terminalLink(element.content, element.href || '/', {
+            fallback: text => chalk.underline(text)
+        });
     }
 };
