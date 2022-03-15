@@ -24,7 +24,7 @@ onMounted(() => {
     }, 1000)
 
     onUnmounted(() =>
-        clearTimeout(timer)
+        clearInterval(timer)
     )
 })
 
