@@ -1,13 +1,13 @@
 import { defineConfig } from 'vite';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import vue from '@vitejs/plugin-vue';
-import craeteViteNodeDevPlugin from './devPlugin';
+import createViteNodeDevPlugin from './devPlugin';
 
 export default defineConfig({
     plugins: [
         vue(),
         vueJsx(),
-        craeteViteNodeDevPlugin({
+        createViteNodeDevPlugin({
             serverOptions: {
                 transformMode: {
                     web: [/([jt]sx?)|(vue)/i]

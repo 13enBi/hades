@@ -1,35 +1,14 @@
-import { createServer } from 'vite';
-import { ViteNodeServer } from 'vite-node/server';
-import { ViteNodeRunner } from 'vite-node/client';
+import { Worker, } from 'worker_threads'
 
-const run = async () => {
-    const server = await createServer({
-        logLevel: 'error',
-        root: './',
-        clearScreen: true,
-        configFile: './vite.config.ts',
-        watch: { usePolling: true }
-    });
-    await server.pluginContainer.buildStart({});
+const viteStarter = './node_modules/vite/bin/vite.js'
 
-    const node = new ViteNodeServer(server, { transformMode: { web: [/./] } });
+let worker
 
-    const runner = new ViteNodeRunner({
-        root: server.config.root,
-        base: server.config.base,
-        fetchModule(id) {
-            return node.fetchModule(id);
-        }
-    });
+const createWorker = () => new Worker(viteStarter).on('message', async (value) => {
+    if (value !== 'hot-update') return
+    await worker?.terminate();
 
-    await runner.executeId('/@vite/env');
+    worker = createWorker()
+})
 
-    await runner.executeFile('./src/index.ts');
-
-    server.watcher.addListener('change', async () => {
-        await server.close();
-        run();
-    });
-};
-
-run();
+worker = createWorker()

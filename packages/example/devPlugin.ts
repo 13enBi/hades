@@ -1,6 +1,7 @@
 import { ViteNodeServer } from 'vite-node/server';
 import { ViteNodeRunner } from 'vite-node/client';
 import { ViteDevServer, Plugin } from 'vite';
+import { isMainThread, parentPort } from 'worker_threads';
 
 type Params<T> = T extends new (...args: infer P) => any ? P : never;
 
@@ -9,7 +10,7 @@ interface Options {
     clientOptions?: Partial<Params<typeof ViteNodeRunner>[0]>;
 }
 
-const craeteViteNodeDevPlugin = ({
+const createViteNodeDevPlugin = ({
     serverOptions,
     clientOptions
 }: Options): Plugin => {
@@ -46,8 +47,9 @@ const craeteViteNodeDevPlugin = ({
 
     return {
         name: 'vite-node-dev',
-        handleHotUpdate: async ({ server }) => {
-            await run(server);
+        handleHotUpdate: async () => {
+            if (isMainThread) process.exit();
+            else parentPort?.postMessage('hot-update');
         },
         configureServer: async server => {
             await run(server);
@@ -55,4 +57,4 @@ const craeteViteNodeDevPlugin = ({
     };
 };
 
-export default craeteViteNodeDevPlugin;
+export default createViteNodeDevPlugin;
