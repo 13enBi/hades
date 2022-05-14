@@ -12,3 +12,8 @@ export const ViewDefaultStyle: Style = {
 export const TextDefaultStyle: Style = {
     display: 'inline'
 };
+
+export const ImageDefaultStyle: Style = {
+    width: 20,
+    height: 20
+};

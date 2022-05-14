@@ -24,7 +24,8 @@ export {
     HadesElement,
     HadesViewElement,
     HadesTextElement,
-    HadesLinkElement
+    HadesLinkElement,
+    HadesImageElement
 };
 
 const NODE_TYPE_MAP: Record<string, typeof HadesElement> = {

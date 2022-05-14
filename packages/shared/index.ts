@@ -9,6 +9,8 @@ export const NOOP = () => {};
 export const stringWidth = (s: string) =>
     _stringWidth(s, { ambiguousIsNarrow: true });
 
+export const isString = (val: unknown): val is string =>
+    typeof val === 'string';
 export const isNumber = (val: unknown): val is number =>
     typeof val === 'number';
 export const isArray = Array.isArray;
@@ -72,13 +74,13 @@ export const generateSquare = (w = 1, h = 1) =>
     w > 0 && h > 0 ? Array(h).fill(' '.repeat(w)).join('\n') : '';
 
 export const splicingHorizontalString = (...strs: string[]) => {
-    const splitedLines = strs.map(lfSplit);
-    const longestLen = Math.max(...splitedLines.map(({ length }) => length));
-    const [first] = splitedLines;
+    const splittedLines = strs.map(lfSplit);
+    const longestLen = Math.max(...splittedLines.map(({ length }) => length));
+    const [first] = splittedLines;
 
-    for (let i = 1, len = splitedLines.length; i < len; i++)
+    for (let i = 1, len = splittedLines.length; i < len; i++)
         for (let j = 0; j < longestLen; j++)
-            first[j] = (first[j] || '') + (splitedLines[i][j] || '');
+            first[j] = (first[j] || '') + (splittedLines[i][j] || '');
 
     return first.join('\n');
 };

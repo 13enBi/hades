@@ -18,36 +18,38 @@ const generateChildOutputAndOffset = ({ context, style }: HadesElement) => {
     return { output, offsetLeft, offsetTop };
 };
 
-export const processChildren = (element: HadesElement) => {
+export const processChildren = async (element: HadesElement) => {
     const { output, offsetLeft, offsetTop } =
         generateChildOutputAndOffset(element);
 
-    element.children.forEach(child => {
-        render(child);
+    await Promise.all(
+        element.children.map(async child => {
+            await render(child);
 
-        const {
-            content,
-            context: {
-                layout: { left, top }
-            }
-        } = child;
-        if (!content) return;
+            const {
+                content,
+                context: {
+                    layout: { left, top }
+                }
+            } = child;
+            if (!content) return;
 
-        const x = left - offsetLeft;
-        const y = top - offsetTop;
+            const x = left - offsetLeft;
+            const y = top - offsetTop;
 
-        lfSplit(content).forEach((line, index) => {
-            const offset = y + index;
+            lfSplit(content).forEach((line, index) => {
+                const offset = y + index;
 
-            const currentLine = output[offset];
-            if (!currentLine) return;
+                const currentLine = output[offset];
+                if (!currentLine) return;
 
-            output[offset] =
-                slice(currentLine, 0, x) +
-                line +
-                slice(currentLine, x + stringWidth(line));
-        });
-    });
+                output[offset] =
+                    slice(currentLine, 0, x) +
+                    line +
+                    slice(currentLine, x + stringWidth(line));
+            });
+        })
+    );
 
     element.content = output.join('\n');
 };

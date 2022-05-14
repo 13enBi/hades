@@ -13,7 +13,7 @@ const parseRgb = (rgb: string) =>
         0, 0, 0
     ];
 
-const preparseBg = <T extends string>(name: T, isBackground: boolean) =>
+const preParseBg = <T extends string>(name: T, isBackground: boolean) =>
     isBackground ? (`bg${capitalize(name)}` as const) : name;
 
 export const colorize = (
@@ -22,15 +22,15 @@ export const colorize = (
     isBackground = false
 ): string => {
     if (isHex(color))
-        return chalk[preparseBg('hex', isBackground)](color)(content);
+        return chalk[preParseBg('hex', isBackground)](color)(content);
 
     if (isRgb(color))
-        return chalk[preparseBg('rgb', isBackground)](...parseRgb(color))(
+        return chalk[preParseBg('rgb', isBackground)](...parseRgb(color))(
             content
         );
 
     //@ts-ignore
-    return chalk[preparseBg(color, isBackground)]?.(content) || content;
+    return chalk[preParseBg(color, isBackground)]?.(content) || content;
 };
 
 export const processColor = (element: HadesElement) => {

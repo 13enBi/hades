@@ -1,20 +1,21 @@
 {
-  "name": "@hades/render",
-  "version": "0.0.1",
-  "description": "@hades/render",
-  "main": "./src/index.ts",
-  "dependencies": {
-    "@hades/layout": "workspace:*",
-    "@hades/shared": "workspace:*",
-    "chalk": "^5.0.0",
-    "cli-boxes": "^3.0.0",
-    "slice-ansi": "^5.0.0",
-    "terminal-image": "^2.0.0",
-    "terminal-link": "^3.0.0"
-  },
-  "author": "13enbi",
-  "license": "MIT",
-  "devDependencies": {
-    "@types/slice-ansi": "^5.0.0"
-  }
+    "name": "@hades/render",
+    "version": "0.0.1",
+    "description": "@hades/render",
+    "main": "./src/index.ts",
+    "dependencies": {
+        "@hades/layout": "workspace:*",
+        "@hades/shared": "workspace:*",
+        "ansi-escapes": "^5.0.0",
+        "chalk": "^5.0.0",
+        "cli-boxes": "^3.0.0",
+        "slice-ansi": "^5.0.0",
+        "terminal-image": "^2.0.0",
+        "terminal-link": "^3.0.0"
+    },
+    "author": "13enbi",
+    "license": "MIT",
+    "devDependencies": {
+        "@types/slice-ansi": "^5.0.0"
+    }
 }

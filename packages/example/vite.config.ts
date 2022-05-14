@@ -16,7 +16,9 @@ export default defineConfig({
         })
     ],
 
-    optimizeDeps: { exclude: ['yoga-layout-prebuilt', 'chalk'] },
+    optimizeDeps: {
+        exclude: ['yoga-layout-prebuilt', 'chalk', 'terminal-image', 'got']
+    },
     build: {
         rollupOptions: {
             input: './src/index.ts'

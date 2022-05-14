@@ -1,3 +1,7 @@
+import { processLink } from './link';
+import { processText } from './text';
+import { processImage } from './image';
+import { processView } from './view';
 import {
     HadesNode,
     NodeType,
@@ -5,13 +9,11 @@ import {
     isDisplayNone,
     isElement,
     HadesViewElement,
-    HadesLinkElement
+    HadesLinkElement,
+    HadesImageElement
 } from '@hades/layout';
-import { processLink } from './link';
-import { processText } from './text';
-import processView from './view';
 
-export const render = (node: HadesNode, isCalcLayout = false) => {
+export const render = async (node: HadesNode, isCalcLayout = false) => {
     if (isCalcLayout) node.yoga.calculateLayout();
 
     node.context.layout = node.yoga.getComputedLayout();
@@ -20,7 +22,7 @@ export const render = (node: HadesNode, isCalcLayout = false) => {
 
     switch (node.type) {
         case NodeType.VIEW:
-            processView(node as HadesViewElement);
+            await processView(node as HadesViewElement);
             break;
 
         case NodeType.TEXT:
@@ -29,6 +31,10 @@ export const render = (node: HadesNode, isCalcLayout = false) => {
 
         case NodeType.LINK:
             processLink(node as HadesLinkElement);
+            break;
+
+        case NodeType.IMAGE:
+            await processImage(node as HadesImageElement);
             break;
 
         default:

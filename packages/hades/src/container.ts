@@ -12,8 +12,8 @@ export class HadesContainer extends HadesViewElement {
     constructor({ stdout }: Options) {
         super();
 
-        const renderContainer = () =>
-            stdout.write(clearScreen + render(this, true));
+        const renderContainer = async () =>
+            stdout.write(clearScreen + (await render(this, true)));
 
         this.update = () => queuePostFlushCb(renderContainer);
     }

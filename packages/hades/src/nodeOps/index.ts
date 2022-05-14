@@ -58,7 +58,6 @@ export const createNodeOps = (
                     ...element.style,
                     ...patchStyle(prevValue, nextValue)
                 });
-                rootContainer.update();
 
                 break;
 
@@ -70,6 +69,8 @@ export const createNodeOps = (
                     element.props[key] = nextValue;
                 }
         }
+
+        rootContainer.update();
     }
 });
 
