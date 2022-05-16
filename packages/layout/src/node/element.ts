@@ -15,6 +15,8 @@ export class HadesElement extends HadesNode {
 
     setStyle(style: Style) {
         setStyle(this, (this.style = style));
+
+        this.markDirty();
     }
 
     insertBefore(this: HadesElement, child: HadesNode, anchor: Anchor) {
@@ -23,12 +25,16 @@ export class HadesElement extends HadesNode {
         const index = insertItem(this.children, child, anchor);
         this.yoga.insertChild(child.yoga, index);
         child.parent = this;
+
+        child.markDirty();
     }
 
     removeChild(this: this, child: HadesNode) {
         removeItem(this.children, child);
         this.yoga.removeChild(child.yoga);
         child.parent = null;
+
+        child.markDirty();
     }
 }
 

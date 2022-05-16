@@ -3,4 +3,4 @@ import Jest from './jest';
 import Counter from './counter/index.vue';
 import Image from './image/index';
 
-createHadesApp(Image).mount();
+createHadesApp(Counter).mount();

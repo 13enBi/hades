@@ -14,11 +14,12 @@ import {
 } from '@hades/layout';
 
 export const render = async (node: HadesNode, isCalcLayout = false) => {
+    if (!node.isDirty && !isCalcLayout) return node.content;
+    if (isElement(node) && isDisplayNone(node)) return '';
+
     if (isCalcLayout) node.yoga.calculateLayout();
 
     node.context.layout = node.yoga.getComputedLayout();
-
-    if (isElement(node) && isDisplayNone(node)) return '';
 
     switch (node.type) {
         case NodeType.VIEW:
@@ -40,6 +41,7 @@ export const render = async (node: HadesNode, isCalcLayout = false) => {
         default:
     }
 
+    node.isDirty = false;
     return node.content;
 };
 

@@ -13,6 +13,7 @@ export class HadesRawTextNode extends HadesNode {
 
     setTextContent(text: string) {
         this.yoga.markDirty();
+        this.markDirty();
         this.content = text;
     }
 }

@@ -9,6 +9,12 @@ export class HadesNode {
     content: Content = null;
     yoga: YogaNode = Yoga.Node.create();
     context = createRenderContext(this); //will be set synchronously right after render
+    isDirty = true;
+
+    markDirty() {
+        this.isDirty = true;
+        this.parent && this.parent.markDirty();
+    }
 
     get nextSibling(): HadesNode | null {
         const { parent } = this;
