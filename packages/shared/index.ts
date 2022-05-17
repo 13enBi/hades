@@ -16,6 +16,8 @@ export const isNumber = (val: unknown): val is number =>
 export const isArray = Array.isArray;
 export const isObject = (val: unknown): val is Record<string, any> =>
     !!val && typeof val === 'object';
+export const isFunction = (val: unknown): val is Func =>
+    typeof val === 'function';
 export const isUndef = (val: unknown): val is undefined => val == void 0;
 
 export const anchorSplice = <T>(
