@@ -1,5 +1,19 @@
-import { HadesTextElement } from '@hades/layout';
+import { HadesRawTextNode, HadesTextElement } from '@hades/layout';
+import truncate from 'cli-truncate';
 
 export const processText = (element: HadesTextElement) => {
-    element.content = element.children.map(child => child.content).join('');
+    const text = element.children.map(child => child.content).join('');
+
+    element.content = truncate(text, element.context.layout.width, {
+        position: 'end'
+    });
+};
+
+export const processRawText = (element: HadesRawTextNode) => {
+    const { content } = element;
+    if (!content) return;
+
+    element.content = truncate(content, element.context.layout.width, {
+        position: 'end'
+    });
 };
