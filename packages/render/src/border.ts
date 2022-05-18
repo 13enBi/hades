@@ -19,7 +19,7 @@ const generateBorderSpacing = (
         bottomRight
     } =
         //@ts-ignore
-        cliBoxes[style];
+        cliBoxes[style] || cliBoxes['single'];
 
     const repeatWidth = width - 2;
     const repeatHeight = height - 2;
