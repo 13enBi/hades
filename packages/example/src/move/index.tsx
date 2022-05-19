@@ -31,7 +31,6 @@ export default defineComponent(() => {
         <View
             style={{
                 flexDirection: 'column',
-
                 width: 100
             }}
         >
@@ -40,7 +39,6 @@ export default defineComponent(() => {
                 style={{
                     borderStyle: 'single',
                     height: 12,
-
                     padding: `${y.value} 0 0 ${x.value}`
                 }}
             >
