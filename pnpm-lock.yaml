@@ -67,6 +67,7 @@ importers:
       '@hades/layout': workspace:*
       '@hades/shared': workspace:*
       '@types/slice-ansi': ^5.0.0
+      '@types/wrap-ansi': ^8.0.1
       ansi-escapes: ^5.0.0
       chalk: ^5.0.0
       cli-boxes: ^3.0.0
@@ -74,6 +75,7 @@ importers:
       slice-ansi: ^5.0.0
       terminal-image: ^2.0.0
       terminal-link: ^3.0.0
+      wrap-ansi: ^8.0.1
     dependencies:
       '@hades/layout': link:../layout
       '@hades/shared': link:../shared
@@ -84,8 +86,10 @@ importers:
       slice-ansi: 5.0.0
       terminal-image: 2.0.0
       terminal-link: 3.0.0
+      wrap-ansi: 8.0.1
     devDependencies:
       '@types/slice-ansi': 5.0.0
+      '@types/wrap-ansi': 8.0.1
 
   packages/shared:
     specifiers:
@@ -1259,6 +1263,10 @@ packages:
 
   /@types/slice-ansi/5.0.0:
     resolution: {integrity: sha512-Bt9wdwNObyD9EQMNN2GSeutWmpsZUC1/bip6XKawJ+cAK9Vhf2EwnSgg7G9Zd7KJv0fTvEbgHFjrHnImemyYQg==}
+    dev: true
+
+  /@types/wrap-ansi/8.0.1:
+    resolution: {integrity: sha512-cjwgM6WWy9YakrQ36Pq0vg5XoNblVEaNq+/pHngKl4GyyDIxTeskPoG+tp4LsRk0lHrA4LaLJqlvYridi7mzlw==}
     dev: true
 
   /@types/yoga-layout/1.9.2:
@@ -3322,6 +3330,15 @@ packages:
       string-width: 4.2.3
       strip-ansi: 6.0.1
     dev: true
+
+  /wrap-ansi/8.0.1:
+    resolution: {integrity: sha512-QFF+ufAqhoYHvoHdajT/Po7KoXVBPXS2bgjIam5isfWJPfIOnQZ50JtUiVvCv/sjgacf3yRrt2ZKUZ/V4itN4g==}
+    engines: {node: '>=12'}
+    dependencies:
+      ansi-styles: 6.1.0
+      string-width: 5.1.0
+      strip-ansi: 7.0.1
+    dev: false
 
   /wrappy/1.0.2:
     resolution: {integrity: sha1-tSQ9jz7BqjXxNkYFvA0QNuMKtp8=}

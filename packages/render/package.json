@@ -12,11 +12,13 @@
         "cli-truncate": "^3.1.0",
         "slice-ansi": "^5.0.0",
         "terminal-image": "^2.0.0",
-        "terminal-link": "^3.0.0"
+        "terminal-link": "^3.0.0",
+        "wrap-ansi": "^8.0.1"
     },
     "author": "13enbi",
     "license": "MIT",
     "devDependencies": {
-        "@types/slice-ansi": "^5.0.0"
+        "@types/slice-ansi": "^5.0.0",
+        "@types/wrap-ansi": "^8.0.1"
     }
 }

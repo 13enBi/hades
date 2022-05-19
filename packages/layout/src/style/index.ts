@@ -7,6 +7,7 @@ import setDimensions, { DimensionsStyle } from './dimensions';
 import setFlex, { FlexStyle } from './flex';
 import { HadesElement } from '..';
 import { WithNoneValue } from './helper';
+import { TextWrapStyle } from './textWrap';
 
 interface ColorStyle {
     color: string;
@@ -21,12 +22,14 @@ export type Style = WithNoneValue<
             PaddingStyle &
             ColorStyle &
             DimensionsStyle &
-            FlexStyle
+            FlexStyle &
+            TextWrapStyle
     >
 >;
 
 export { isDisplayNone, isDisplayInline } from './helper';
 export { EdgeStyle, EdgeValue } from './edges';
+export { TextWrapType } from './textWrap';
 
 const setStyleFns = eachCall(
     setPadding,
