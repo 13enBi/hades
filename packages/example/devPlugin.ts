@@ -1,7 +1,6 @@
 import { ViteNodeServer } from 'vite-node/server';
 import { ViteNodeRunner } from 'vite-node/client';
 import { ViteDevServer, Plugin } from 'vite';
-import { isMainThread, parentPort } from 'worker_threads';
 
 type Params<T> = T extends new (...args: infer P) => any ? P : never;
 
@@ -48,8 +47,7 @@ const createViteNodeDevPlugin = ({
     return {
         name: 'vite-node-dev',
         handleHotUpdate: async () => {
-            if (isMainThread) process.exit();
-            else parentPort?.postMessage('hot-update');
+            process.send?.('hot-update');
         },
         configureServer: async server => {
             await run(server);

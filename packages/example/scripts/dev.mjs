@@ -1,12 +1,12 @@
-import { Worker, } from 'worker_threads'
+import { fork } from 'child_process'
 
 const viteStarter = './node_modules/vite/bin/vite.js'
 
 let worker
 
-const createWorker = () => new Worker(viteStarter).on('message', async (value) => {
+const createWorker = () => fork(viteStarter).on('message', async (value) => {
     if (value !== 'hot-update') return
-    await worker?.terminate();
+    await worker?.kill()
 
     worker = createWorker()
 })
