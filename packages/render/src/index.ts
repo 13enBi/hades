@@ -14,17 +14,14 @@ const PROCESSOR_MAP = {
 
 export const render = async (node: HadesNode, isCalcLayout = false) => {
     if (!node.isDirty && !isCalcLayout) return node.content;
-    if (isElement(node) && isDisplayNone(node)) return '';
+    node.isDirty = false;
 
     if (isCalcLayout) node.yoga.calculateLayout();
     node.context.layout = node.yoga.getComputedLayout();
 
-    const processor = PROCESSOR_MAP[node.type];
-    if (!processor) throw new Error(`Unknown node type: ${node.type}`);
-    // @ts-ignore
-    await processor(node);
+    if (isElement(node) && isDisplayNone(node)) return '';
+    await PROCESSOR_MAP[node.type]?.(node as any);
 
-    node.isDirty = false;
     return node.content;
 };
 
