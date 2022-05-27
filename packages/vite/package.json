@@ -1,0 +1,20 @@
+{
+    "name": "@hades/vite",
+    "version": "0.0.1",
+    "description": "@hades/vite",
+    "main": "dist/index.mjs",
+    "module": "dist/index.mjs",
+    "types": "dist/index.d.ts",
+    "scripts": {
+        "build": "tsup-node src/index.ts --target node16 --dts --format cjs,esm "
+    },
+    "author": "13enbi",
+    "license": "MIT",
+    "devDependencies": {
+        "tsup": "^6.0.1",
+        "vite": "^2.9.9"
+    },
+    "dependencies": {
+        "vite-node": "^0.12.5"
+    }
+}

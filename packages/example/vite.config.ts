@@ -1,14 +1,14 @@
 import { defineConfig } from 'vite';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import vue from '@vitejs/plugin-vue';
-import createViteNodeDevPlugin from './devPlugin';
+import hades from '@hades/vite';
 
 export default defineConfig({
     plugins: [
         vue(),
         vueJsx(),
-        createViteNodeDevPlugin({
-            serverOptions: {
+        hades({
+            server: {
                 transformMode: {
                     web: [/([jt]sx?)|(vue)/i]
                 }
