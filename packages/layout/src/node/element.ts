@@ -6,15 +6,19 @@ import { HadesNode } from './node';
 export class HadesElement extends HadesNode {
     props: NonNullable<Props>;
     children: HadesNode[] = [];
-    style: Style = {};
+    protected _style: Style = {};
 
     constructor(props?: Props) {
         super();
         this.props = props || {};
     }
 
-    setStyle(style: Style) {
-        setStyle(this, (this.style = style));
+    get style() {
+        return this._style;
+    }
+
+    set style(style: Style) {
+        setStyle(this, (this._style = style));
 
         this.markDirty();
     }

@@ -4,7 +4,7 @@ import { HadesElement } from './element';
 
 export class HadesImageElement extends HadesElement {
     type = NodeType.IMAGE;
-    style = ImageDefaultStyle;
+    _style = ImageDefaultStyle;
 
     protected _src: string | Buffer = '';
 

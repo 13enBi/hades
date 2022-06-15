@@ -54,10 +54,10 @@ export const createNodeOps = (
     patchProp: (element, key, prevValue, nextValue) => {
         switch (key) {
             case 'style':
-                element.setStyle({
+                element.style = {
                     ...element.style,
                     ...patchStyle(prevValue, nextValue)
-                });
+                };
 
                 break;
 

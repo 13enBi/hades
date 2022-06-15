@@ -5,12 +5,12 @@ import { HadesElement } from './element';
 
 export class HadesTextElement extends HadesElement {
     type = NodeType.TEXT;
-    style = TextDefaultStyle;
+    _style = TextDefaultStyle;
 
-    setStyle(style: Style) {
+    set style(style: Style) {
         if (style.display === 'flex') style.display = 'inline';
 
-        super.setStyle(style);
+        super.style = style;
     }
 
     insertBefore(this: this, child: HadesNode, anchor: Anchor) {
