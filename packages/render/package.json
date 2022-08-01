@@ -3,6 +3,9 @@
     "version": "0.0.1",
     "description": "@hades/render",
     "main": "./src/index.ts",
+    "buildOptions": {
+        "input": "./src/index.ts"
+    },
     "dependencies": {
         "@hades/layout": "workspace:*",
         "@hades/shared": "workspace:*",

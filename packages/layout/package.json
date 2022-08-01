@@ -3,9 +3,11 @@
     "version": "0.0.1",
     "description": "@hades/layout",
     "main": "./src/index.ts",
-    "scripts": {},
     "author": "13enbi",
     "license": "MIT",
+    "buildOptions": {
+        "input": "./src/index.ts"
+    },
     "dependencies": {
         "@hades/shared": "workspace:*",
         "yoga-layout-prebuilt": "^1.10.0"

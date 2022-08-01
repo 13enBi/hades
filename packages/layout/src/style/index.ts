@@ -9,7 +9,7 @@ import { HadesElement } from '..';
 import { WithNoneValue } from './helper';
 import { TextWrapStyle } from './textWrap';
 
-interface ColorStyle {
+export interface ColorStyle {
     color: string;
     backgroundColor: string;
 }
