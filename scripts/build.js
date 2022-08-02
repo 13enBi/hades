@@ -1,4 +1,5 @@
-import fs, { readFileSync } from 'fs';
+import { readFileSync, readdirSync } from 'fs';
+import { rm } from 'fs/promises';
 import os from 'os';
 import minimist from 'minimist';
 import { argv } from 'process';
@@ -12,11 +13,13 @@ const readPackageJson = path => {
 };
 
 const getAllTargets = () =>
-    fs.readdirSync(PACKAGES_PATH).map(path => `${PACKAGES_PATH}/${path}`);
+    readdirSync(PACKAGES_PATH).map(path => `${PACKAGES_PATH}/${path}`);
+
+const shouldArray = value => (Array.isArray(value) ? value : [value]);
 
 const getTargets = args => {
-    const argTargets = args.filter ?? args.f ?? args._;
-    const targets = argTargets?.length ? argTargets : getAllTargets();
+    const argTargets = shouldArray(args.filter ?? args.f ?? args._);
+    const targets = argTargets.length ? argTargets : getAllTargets();
 
     return targets
         .map(target => [target, readPackageJson(target)])
@@ -26,20 +29,21 @@ const getTargets = args => {
         );
 };
 
-const runParallel = async (promises, max) => {
+const runParallel = async (source, iterator, max) => {
     let currentIndex = 0;
 
     const result = [];
 
     const run = async () => {
+        if (currentIndex >= source.length) return;
+
         const index = currentIndex++;
-        const p = promises[index];
-        if (!p) return;
+        const item = source[index];
 
         try {
             result[index] = {
                 status: 'fulfilled',
-                value: await p()
+                value: await iterator(item, index)
             };
         } catch (reason) {
             result[index] = {
@@ -60,24 +64,25 @@ const run = async () => {
     const args = minimist(argv.slice(2));
     const targets = getTargets(args);
 
-    const tasks = targets.map(async ([path, { buildOptions }]) => {
-        fs.rmdirSync(`${path}/dist`, { recursive: true });
-
-        await execa(
-            'pnpm tsup-node',
-            [
-                buildOptions.input,
-                '--target',
-                'node16',
-                '--dts',
-                '--format',
-                'cjs,esm'
-            ],
-            { stdio: 'inherit', cwd: path }
-        );
-    });
-
-    await runParallel(tasks, os.cpus().length);
+    await runParallel(
+        targets,
+        ([path, { buildOptions }]) =>
+            rm(`${path}/dist`, { recursive: true }).then(() =>
+                execa(
+                    'pnpm tsup-node',
+                    [
+                        buildOptions.input,
+                        '--target',
+                        'node16',
+                        '--dts',
+                        '--format',
+                        'cjs,esm'
+                    ],
+                    { stdio: 'inherit', cwd: path }
+                )
+            ),
+        os.cpus().length
+    );
 };
 
 run();
