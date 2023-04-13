@@ -1,6 +1,7 @@
 import Yoga, { YogaNode } from 'yoga-layout-prebuilt';
-import { NodeType, Content } from '.';
+
 import { createRenderContext } from '../context';
+import { Content, NodeType } from './';
 import { HadesElement } from './element';
 
 export class HadesNode {

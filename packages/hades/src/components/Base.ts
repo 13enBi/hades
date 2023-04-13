@@ -1,5 +1,6 @@
-import { NodeType, Style } from '@hades/layout';
 import { ComponentObjectPropsOptions, defineComponent, h, PropType } from 'vue';
+
+import { NodeType, Style } from '@hades/layout';
 
 export const createBaseComponent = <
     T extends NodeType,

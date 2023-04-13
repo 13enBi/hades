@@ -1,7 +1,9 @@
 import slice from 'slice-ansi';
+
 import { HadesElement } from '@hades/layout';
 import { lfSplit, stringWidth } from '@hades/shared';
-import render from '.';
+
+import render from './';
 
 const generateChildOutputAndOffset = ({ context, style }: HadesElement) => {
     const { padding, layout } = context;

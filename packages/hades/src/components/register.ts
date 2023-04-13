@@ -1,4 +1,5 @@
 import { App } from 'vue';
+
 import * as components from './';
 
 export const registerComponents = (app: App) => {

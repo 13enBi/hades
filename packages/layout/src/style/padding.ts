@@ -1,6 +1,6 @@
-import { SetStyleFn } from './helper';
+import { isDisplayInline } from './';
 import { createSetEdgeStyle, EdgeStyle } from './edges';
-import { isDisplayInline } from '.';
+import { SetStyleFn } from './helper';
 
 export type PaddingStyle = EdgeStyle<'padding'>;
 

@@ -1,6 +1,8 @@
+import { onMounted, onUnmounted } from 'vue';
+
 import { entriesMap, isFunction } from '@hades/shared';
-import { onMounted, onUnmounted, ref } from 'vue';
-import { useStdin } from '.';
+
+import { useStdin } from './';
 
 const KEY_MAP = {
     up: '\u001B[A',

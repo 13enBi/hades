@@ -1,5 +1,5 @@
-import { NodeType } from '.';
 import { ImageDefaultStyle } from '../style/default';
+import { NodeType } from './';
 import { HadesElement } from './element';
 
 export class HadesImageElement extends HadesElement {

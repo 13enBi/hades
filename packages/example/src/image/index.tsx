@@ -1,6 +1,6 @@
-import { defineComponent, onMounted, ref } from 'vue';
 import got from 'got';
-import { Image, View } from 'hades';
+import { Image } from 'hades';
+import { defineComponent, onMounted, ref } from 'vue';
 
 export default defineComponent({
     setup: () => {

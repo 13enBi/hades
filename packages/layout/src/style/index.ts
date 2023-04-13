@@ -1,12 +1,13 @@
 import { eachCall } from '@hades/shared';
-import setPadding, { PaddingStyle } from './padding';
-import setMargin, { MarginStyle } from './margin';
+
+import { HadesElement } from '../';
 import setBorder, { BorderStyle } from './border';
-import setDisplay, { DisplayStyle } from './display';
 import setDimensions, { DimensionsStyle } from './dimensions';
+import setDisplay, { DisplayStyle } from './display';
 import setFlex, { FlexStyle } from './flex';
-import { HadesElement } from '..';
 import { WithNoneValue } from './helper';
+import setMargin, { MarginStyle } from './margin';
+import setPadding, { PaddingStyle } from './padding';
 import { TextWrapStyle } from './textWrap';
 
 export interface ColorStyle {

@@ -1,4 +1,5 @@
 import { capitalize } from '@hades/shared';
+
 import { isPercentage, Percentage, SetStyleFn } from './helper';
 
 export type DimensionsStyle = Record<

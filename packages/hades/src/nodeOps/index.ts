@@ -1,4 +1,5 @@
 import { RendererOptions } from 'vue';
+
 import {
     createElement,
     createRawText,
@@ -6,6 +7,7 @@ import {
     HadesNode,
     HadesRawTextNode
 } from '@hades/layout';
+
 import { HadesContainer } from '../container';
 import patchStyle from './patchStyle';
 

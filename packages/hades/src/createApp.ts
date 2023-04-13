@@ -1,10 +1,12 @@
 import { App, Component, ComponentPublicInstance, createRenderer } from 'vue';
+
 import { HadesElement } from '@hades/layout';
 import { NOOP } from '@hades/shared';
-import createNodeOps from './nodeOps';
-import { createContainer } from './container';
-import provideOptions, { Options, resolveOptions } from './options';
+
 import { registerComponents } from './components/register';
+import { createContainer } from './container';
+import createNodeOps from './nodeOps';
+import provideOptions, { Options, resolveOptions } from './options';
 
 type HadesApp = App<HadesElement> & {
     mount: () => ComponentPublicInstance;

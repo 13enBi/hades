@@ -1,8 +1,9 @@
-import { HadesNode, NodeType, isDisplayNone, isElement } from '@hades/layout';
+import { HadesNode, isDisplayNone, isElement, NodeType } from '@hades/layout';
+
+import { processImage } from './image';
+import { processLink } from './link';
 import { processRawText, processText } from './text';
 import { processView } from './view';
-import { processLink } from './link';
-import { processImage } from './image';
 
 const PROCESSOR_MAP = {
     [NodeType.VIEW]: processView,

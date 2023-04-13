@@ -1,6 +1,8 @@
 import cliBoxes from 'cli-boxes';
+
 import { HadesElement } from '@hades/layout';
 import { entriesMap, Spacing, splicingSpacing } from '@hades/shared';
+
 import { colorize } from './color';
 
 const generateBorderSpacing = (

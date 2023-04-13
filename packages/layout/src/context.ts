@@ -1,5 +1,6 @@
 import { YogaNode } from 'yoga-layout-prebuilt';
-import { HadesNode } from '.';
+
+import { HadesNode } from './';
 import { EdgeValue } from './style/edges';
 
 type Layout = ReturnType<YogaNode['getComputedLayout']>;

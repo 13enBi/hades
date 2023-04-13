@@ -1,6 +1,8 @@
-import { HadesLinkElement } from '@hades/layout';
 import chalk from 'chalk';
 import terminalLink from 'terminal-link';
+
+import { HadesLinkElement } from '@hades/layout';
+
 import { processText } from './text';
 
 export const processLink = (element: HadesLinkElement) => {

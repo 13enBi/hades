@@ -1,4 +1,4 @@
-import { NodeType } from '.';
+import { NodeType } from './';
 import { HadesTextElement } from './text';
 
 export class HadesLinkElement extends HadesTextElement {

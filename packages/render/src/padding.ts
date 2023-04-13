@@ -1,4 +1,4 @@
-import { HadesElement, EdgeValue } from '@hades/layout';
+import { EdgeValue, HadesElement } from '@hades/layout';
 import { generateSquare, getContentSize, splicingSpacing } from '@hades/shared';
 
 const generatePadding = (content: string, padding: EdgeValue) => {

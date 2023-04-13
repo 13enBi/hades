@@ -1,5 +1,5 @@
 import Yoga from 'yoga-layout-prebuilt';
-import { isNoneValue, SetStyleFn, StyleValue } from './helper';
+
 import {
     capitalize,
     isEmptyArray,
@@ -7,6 +7,8 @@ import {
     isUndef,
     splitSpace
 } from '@hades/shared';
+
+import { isNoneValue, SetStyleFn, StyleValue } from './helper';
 
 const { EDGE_TOP, EDGE_RIGHT, EDGE_BOTTOM, EDGE_LEFT } = Yoga;
 const EDGE_TYPES = {

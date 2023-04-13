@@ -1,4 +1,4 @@
-import { useInput, View, Text } from 'hades';
+import { Text, useInput, View } from 'hades';
 import { defineComponent, ref } from 'vue';
 
 export default defineComponent(() => {

@@ -1,4 +1,4 @@
-import { Style } from '.';
+import { Style } from './';
 
 export const ViewDefaultStyle: Style = {
     display: 'flex',

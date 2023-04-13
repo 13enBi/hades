@@ -1,5 +1,7 @@
-import { NodeType, Style } from '@hades/layout';
 import { PropType } from 'vue';
+
+import { NodeType, Style } from '@hades/layout';
+
 import { createBaseComponent } from './Base';
 
 export const Image = createBaseComponent(NodeType.IMAGE, 'h-link', {

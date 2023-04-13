@@ -1,6 +1,6 @@
-import { Anchor, HadesNode, NodeType } from '.';
-import { Style } from '..';
+import { Style } from '../';
 import { TextDefaultStyle } from '../style/default';
+import { Anchor, HadesNode, NodeType } from './';
 import { HadesElement } from './element';
 
 export class HadesTextElement extends HadesElement {

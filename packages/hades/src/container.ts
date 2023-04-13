@@ -1,7 +1,9 @@
-import { queuePostFlushCb } from 'vue';
 import ansi from 'ansi-escapes';
+import { queuePostFlushCb } from 'vue';
+
 import { HadesViewElement } from '@hades/layout';
 import { render } from '@hades/render';
+
 import { Options } from './options';
 
 const { clearScreen } = ansi;

@@ -1,7 +1,8 @@
-import { HadesImageElement } from '@hades/layout';
-import { isString } from '@hades/shared';
 import { Buffer } from 'buffer';
 import terminalImage from 'terminal-image';
+
+import { HadesImageElement } from '@hades/layout';
+import { isString } from '@hades/shared';
 
 export const processImage = async (element: HadesImageElement) => {
     const { src } = element;

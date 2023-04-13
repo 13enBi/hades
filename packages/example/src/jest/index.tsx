@@ -2,11 +2,12 @@
  * copy from ink/examples/jest
  */
 
-import { defineComponent, onMounted, reactive } from 'vue';
 import { View } from 'hades';
+import PQueue from 'p-queue';
+import { defineComponent, onMounted, reactive } from 'vue';
+
 import Summary from './summary';
 import Test from './test';
-import PQueue from 'p-queue';
 
 const delay = (timeout: number) => new Promise(r => setTimeout(r, timeout));
 

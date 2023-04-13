@@ -1,5 +1,6 @@
 import { insertItem, removeItem } from '@hades/shared';
-import { Anchor, setStyle, Style } from '..';
+
+import { Anchor, setStyle, Style } from '../';
 import { Props } from './index';
 import { HadesNode } from './node';
 

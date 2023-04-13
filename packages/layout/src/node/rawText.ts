@@ -1,5 +1,6 @@
 import { getContentSize } from '@hades/shared';
-import { NodeType, Content } from '.';
+
+import { Content, NodeType } from './';
 import { HadesNode } from './node';
 
 export class HadesRawTextNode extends HadesNode {

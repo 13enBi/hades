@@ -1,5 +1,6 @@
-import { HadesElement } from '../node';
 import { camelize, capitalize, memo, Undef } from '@hades/shared';
+
+import { HadesElement } from '../node';
 
 export type Percentage = `${number}%`;
 export const isPercentage = memo((str: string): str is Percentage =>

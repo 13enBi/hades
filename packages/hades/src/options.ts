@@ -1,5 +1,6 @@
-import { stdout, stdin } from 'process';
+import { stdin, stdout } from 'process';
 import { App } from 'vue';
+
 import { KEY_STDIN, KEY_STDOUT } from './constant';
 
 export interface Options {

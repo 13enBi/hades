@@ -1,6 +1,6 @@
-import { SetStyleFn, isNoneValue } from './helper';
+import { isDisplayInline } from './';
 import { createSetEdgeStyle } from './edges';
-import { isDisplayInline } from '.';
+import { isNoneValue, SetStyleFn } from './helper';
 
 export interface BorderStyle {
     borderStyle: string;

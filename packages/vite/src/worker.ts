@@ -1,5 +1,6 @@
 import { ChildProcess, fork } from 'child_process';
-import { HADES_MODE_ENV, HADES_HMR_EVENT } from './constant';
+
+import { HADES_HMR_EVENT, HADES_MODE_ENV } from './constant';
 
 const viteStarter = './node_modules/vite/bin/vite.js';
 const env = { [HADES_MODE_ENV]: HADES_MODE_ENV, ...process.env };

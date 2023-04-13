@@ -1,10 +1,12 @@
 import Yoga from 'yoga-layout-prebuilt';
+
 import { capitalize, eachCall, isNumber, splitSpace } from '@hades/shared';
+
 import {
     createSetMapStyle,
+    isPercentage,
     Percentage,
-    SetStyleFn,
-    isPercentage
+    SetStyleFn
 } from './helper';
 
 export interface FlexStyle {

@@ -1,5 +1,6 @@
-import wrapAnsi from 'wrap-ansi';
 import truncate, { Options as TruncateOptions } from 'cli-truncate';
+import wrapAnsi from 'wrap-ansi';
+
 import {
     HadesRawTextNode,
     HadesTextElement,
